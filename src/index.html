@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DuneSlide Harness Lab</title>
+  <meta name="description" content="Replay DuneSlide, CurXecute, MCPoison and multi-agent taint bugs against a toggleable agent harness, fully in the browser." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">⛬</span>
+      <div>
+        <h1>DuneSlide Harness Lab</h1>
+        <p class="sub">The model can be talked into anything. Can your harness hold?</p>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="https://vishalmysore.github.io/harnessEngineeringDemo/" target="_blank" rel="noopener">Harness Engineering demo ↗</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="scenarios">
+      <h2>Bug classes</h2>
+      <ol id="scenarioList"></ol>
+      <div class="planes-key">
+        <h3>Two planes</h3>
+        <p><span class="tag instruction">instruction</span> text the <b>model</b> interprets: AGENTS.md, docs, tool results.</p>
+        <p><span class="tag control">control</span> config the <b>harness</b> executes without asking: mcp.json, hooks, skills, devcontainer.</p>
+      </div>
+    </aside>
+
+    <section class="center">
+      <article class="scenario-card" id="scenarioCard"></article>
+
+      <section class="controls">
+        <div class="controls-head">
+          <h2>Your harness controls</h2>
+          <div class="presets">
+            <button data-preset="vulnerable">All off</button>
+            <button data-preset="hardened">All on</button>
+            <button data-preset="only">Only this bug's control</button>
+          </div>
+        </div>
+        <div id="controlList" class="control-list"></div>
+      </section>
+
+      <section class="runs">
+        <div class="run" id="runVuln">
+          <div class="run-head"><h3>Baseline harness <small>(all controls off)</small></h3><span class="verdict"></span></div>
+          <ol class="trace"></ol>
+        </div>
+        <div class="run" id="runYours">
+          <div class="run-head"><h3>Your harness</h3><span class="verdict"></span></div>
+          <ol class="trace"></ol>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Virtual filesystem after your run</h2>
+        <table class="fs"><thead><tr><th>Path</th><th>Plane</th><th>Label</th></tr></thead><tbody id="fsBody"></tbody></table>
+      </section>
+
+      <section class="panel">
+        <h2>Which control stops which bug?</h2>
+        <p class="hint">Each cell replays the scenario with <b>only</b> that control switched on. ✔ means the bug was stopped.</p>
+        <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+      </section>
+
+      <section class="panel reviewer">
+        <h2>Incident reviewer <small>(optional, local WebLLM)</small></h2>
+        <p class="hint">The model never makes a security decision here. It reads the finished trace and explains it in plain words.</p>
+        <div class="row">
+          <select id="modelSelect"></select>
+          <button id="loadModel">Load model</button>
+          <button id="explain" disabled>Explain my run</button>
+        </div>
+        <div id="modelStatus" class="status"></div>
+        <div id="explanation" class="explanation"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Everything runs in your browser against an in-memory filesystem. Payloads are inert markers; nothing executes.
+    References: Cato AI Labs (DuneSlide), Aim Labs (CurXecute), Check Point Research (MCPoison).
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

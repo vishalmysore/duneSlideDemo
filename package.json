@@ -1,0 +1,17 @@
+{
+  "name": "duneslide-harness-lab",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "@mlc-ai/web-llm": "^0.2.84"
+  }
+}
