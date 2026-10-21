@@ -99,7 +99,7 @@ function renderFs(run) {
       hit ? 'written by agent, outside workspace' : outside ? 'outside workspace' : '',
     ].filter(Boolean).join(' · ')
     return `<tr class="${hit ? 'outside' : ''}"><td><code>${esc(f.path)}</code></td>
-      <td><span class="tag ${plane}">${plane}</span> <small>${esc(kind)}</small></td><td>${esc(labels)}</td></tr>`
+      <td><span class="tag ${plane === 'control' ? 'ctrlplane' : plane}">${plane}</span> <small>${esc(kind)}</small></td><td>${esc(labels)}</td></tr>`
   }).join('')
 }
 
