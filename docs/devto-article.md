@@ -16,8 +16,6 @@ The answer lives in the **harness**: the deterministic code between the model's 
 👉 **Live demo:** https://vishalmysore.github.io/duneSlideDemo/
 👉 **Code:** https://github.com/vishalmysore/duneSlideDemo
 
-![DuneSlide Harness Lab overview](https://raw.githubusercontent.com/vishalmysore/duneSlideDemo/main/docs/images/01-overview.jpg)
-
 Everything runs in your browser against an in-memory filesystem. Payloads are inert marker strings and "execution" is a log line, so nothing touches your disk or network.
 
 ---
